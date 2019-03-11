@@ -13,9 +13,10 @@ class RoomList extends Component {
   }
 
   createNewRoom(newRoomName){
-    this.roomsRef.push({name:newRoomName});
-    this.setState=({newRoomName: ""});
-  }
+     this.roomsRef.push({name:newRoomName});
+     this.setState=({newRoomName: ""});
+
+   }
 
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
@@ -31,6 +32,8 @@ this.setState({newRoomName:e.target.value});
 handleSubmit(e){
 e.preventDefault();
 this.createNewRoom(this.state.newRoomName);
+var form = document.getElementById("myForm");
+form.reset();
 }
 
   render (){
@@ -40,10 +43,10 @@ this.createNewRoom(this.state.newRoomName);
         <li key={room.key}>{room.name}</li>
       ))}
 
-      <form onSubmit={(e)=>this.handleSubmit(e)}>
+      <form id= "myForm" onSubmit={(e)=>this.handleSubmit(e)}>
 <label>
   Create New Room:
-<input type= "text" value={this.state.newRoomName} onChange={(e)=>this.handleChange(e)}/>
+<input type= "text"  onChange={(e)=>this.handleChange(e)}/>
 </label>
 <input type = "submit" value = "+"/>
       </form>
