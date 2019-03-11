@@ -5,12 +5,18 @@ class RoomList extends Component {
     super(props);
     this.state = {
       rooms: [],
-      newRoomName :'',
-      name : ''
+      newRoomName : ""
+
     }
     this.roomsRef = this.props.firebase.database().ref('rooms');
 
   }
+
+  createNewRoom(newRoomName){
+     this.roomsRef.push({name:newRoomName});
+     this.setState=({newRoomName: ""});
+
+   }
 
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
@@ -19,44 +25,34 @@ class RoomList extends Component {
       this.setState({ rooms: this.state.rooms.concat( room ) })
     });
   }
+handleChange(e){
+this.setState({newRoomName:e.target.value});
+}
 
-  handleChange(e){
-    this.setState =({newRoomName:e.target.value});
-  }
-
-  createNewRoom(e){
-    e.preventDefault();
-    if (!this.state.name) return
-    const newRoomName = this.state.name;
-    this.roomsRef.push({name:newRoomName});
-    this.setState=({name: ""});
-  }
-
-
-
+handleSubmit(e){
+e.preventDefault();
+this.createNewRoom(this.state.newRoomName);
+var form = document.getElementById("myForm");
+form.reset();
+}
 
   render (){
     return (
       <div>
-        {this.state.rooms.map( room => (
-          <li key={room.key}>{room.name}</li>
-        ))}
+      {this.state.rooms.map( room => (
+        <li key={room.key}>{room.name}</li>
+      ))}
 
-        <form className="submitForm" onSubmit={this.createNewRoom.bind(this)}>
+      <form id= "myForm" onSubmit={(e)=>this.handleSubmit(e)}>
+<label>
+  Create New Room:
+<input type= "text"  onChange={(e)=>this.handleChange(e)}/>
+</label>
+<input type = "submit" value = "+"/>
+      </form>
 
-          <input
-            id="submitRoomForm"
-            name = "name"
-            ref={nroom => this.name = nroom}
-            onChange={this.handleChange.bind(this)}
-            value={this.state.name}
-            placeholder="Enter new Room"
-            type="text" />
-        </form>
-
-
-      </div>
-    )
+    </div>
+)
   }
 }
 
