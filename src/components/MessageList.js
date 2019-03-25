@@ -56,7 +56,9 @@ class MessageList extends Component {
     return(
       <section>
         <div id="right">
-          <p>{this.props.activeRoom}</p>
+          <p>{this.props.activeRoomKey}</p>
+
+
         <ul  className="messages">
           {this.state.messages
             .filter( message => message.roomId === this.props.activeRoomKey)
@@ -94,6 +96,7 @@ class MessageList extends Component {
           </form>
 
         </div>
+
       </section>
     )
   }
