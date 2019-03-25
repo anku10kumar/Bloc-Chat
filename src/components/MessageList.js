@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import * as firebase from 'firebase';
+
 import './../style/MessageList.css';
 
 class MessageList extends Component {
@@ -44,7 +44,7 @@ class MessageList extends Component {
     this.createMessage(this.state.newMessage);
     this.setState({ newMessage: "" });
   }
-  
+
   handleChange(e) {
     const newName = e.target.value;
     this.setState({ newMessage: newName });
@@ -60,18 +60,20 @@ class MessageList extends Component {
         <ul  className="messages">
           {this.state.messages
             .filter( message => message.roomId === this.props.activeRoomKey)
-            .map((message, index) => {
-              return(
+            .map((message, index) => (
+
 
                 <li key = {index}>
 
-                  {new Date(message.sentAt).toString()}
-                  {message.username}
-                  {message.message}
 
-                </li>
-              );
-            })}
+                  {new
+                    Date(message.sentAt).toString()}
+                  {message.username}
+                  {message.content}
+                  </li>
+
+            ))
+          }
 
           </ul>
         </div>
