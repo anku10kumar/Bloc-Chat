@@ -29,7 +29,7 @@ class MessageList extends Component {
   createMessage(){
     this.messageRef.push({
       username:this.state.userName,
-      content:this.state.content,
+      content:this.state.newMessage,
       sentAt:this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId:this.props.activeRoomKey,
     });
@@ -61,21 +61,19 @@ class MessageList extends Component {
 
         <ul  className="messages">
           {this.state.messages
-            .filter( message => message.roomId === this.props.activeRoomKey)
-            .map((message, index) => (
-
-
-                <li key = {index}>
-
-
-                  {new
-                    Date(message.sentAt).toString()}
-                  {message.username}
-                  {message.content}
-                  </li>
-
-            ))
-          }
+          .filter( message => message.roomId === this.props.activeRoomKey)
+          .map((message, index) => {
+            console.log(message);
+            return (
+              <li key = {index}>
+                {new Date(message.sentAt).toString()}
+                {message.username}
+                {message.content}
+                </li>
+          )
+        }
+      )
+        }
 
           </ul>
         </div>
