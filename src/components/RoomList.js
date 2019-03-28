@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
 
-<<<<<<< HEAD
-=======
 import './../style/RoomList.css';
 
->>>>>>> 2766
 class RoomList extends Component {
   constructor (props) {
     super(props);
     this.state = {
       rooms: [],
-<<<<<<< HEAD
-      newRoomName : ""
-
-    }
-    this.roomsRef = this.props.firebase.database().ref('rooms');
-
-=======
       newRoomName : "",
 activeRoom: ""
     }
     this.roomsRef = this.props.firebase.database().ref('rooms');
   this.selectRoom = this.selectRoom.bind(this)
->>>>>>> 2766
   }
 
   createNewRoom(newRoomName){
@@ -49,14 +38,6 @@ var form = document.getElementById("myForm");
 form.reset();
 }
 
-<<<<<<< HEAD
-  render (){
-    return (
-      <div>
-      {this.state.rooms.map( room => (
-        <li key={room.key}>{room.name}</li>
-      ))}
-=======
 selectRoom(room) {
    this.props.activeRoom(room);
  }
@@ -69,7 +50,6 @@ selectRoom(room) {
         <li key={room.key} onClick={() => this.selectRoom(room)}>{room.name} </li>
       ))}
     </h1>
->>>>>>> 2766
 
       <form id= "myForm" onSubmit={(e)=>this.handleSubmit(e)}>
 <label>
@@ -79,13 +59,10 @@ selectRoom(room) {
 <input type = "submit" value = "+"/>
       </form>
 
-<<<<<<< HEAD
-=======
        <h3>{this.state.activeRoom}</h3>
 
 
 
->>>>>>> 2766
     </div>
 )
   }
