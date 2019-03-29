@@ -8,7 +8,7 @@ class MessageList extends Component {
     super(props);
     this.state = {
       messages: [],
-      userName:"Test user",
+      userName:"user",
       content: "",
       sentAt: "",
       roomId: "",

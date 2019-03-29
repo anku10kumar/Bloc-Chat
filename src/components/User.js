@@ -1,48 +1,46 @@
 import React, { Component } from 'react';
 
-class User extends Component(){
-constructor(props){
-  super(props)
-
+class User extends Component{
+  constructor(props){
+    super(props)
 }
+
   signInWithPopup=()=>{
     const provider = new this.props.firebase.auth.GoogleAuthProvider();
-this.props.firebase.auth().signInWithPopup( provider );
+    this.props.firebase.auth().signInWithPopup( provider );
   }
 
   signOut = ()=>{
-
-    this.props.firebase.auth().signOut();
+this.props.firebase.auth().signOut();
   }
-
-
 
   componentDidMount(){
     this.props.firebase.auth().onAuthStateChanged( user => {
-  this.props.setUser(user);
-});
+      this.props.setUser(user);
+    });
   }
 
   render(){
 
-return(
+    return(
 
-<div className = "buttons">
-<button onclick={() => this.signInWithPopup()}>Sign-In</button>
-<button onclick={() => this.signOut()}>Sign-Out</button>
+      <div className = "buttons">
+        <button onclick={() => this.signInWithPopup()}>Sign-In</button>
+      <button onclick={() => this.signOut()}>Sign-Out</button>
 
-<div>
+    <div>
 
-<p className ="UserName">
-  Hello, {this.props.user ? this.props.user.DisplayName : "Guest"}!
-</p>
+      <p className ="UserName">
+        Hello, {this.props.user ? this.props.user.DisplayName : "Guest"}!
+      </p>
 
-</div>
-</div>
+    </div>
+
+  </div>
 
 )
 
-  }
+}
 }
 
-export default User
+export default User;
