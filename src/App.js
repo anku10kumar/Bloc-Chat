@@ -27,7 +27,6 @@ class App extends Component {
     username: ""
     }
 
-
     this.activeRoom = this.activeRoom.bind(this)
   }
 
