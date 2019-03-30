@@ -85,7 +85,7 @@ class MessageList extends Component {
             <input
               type="text"
               value={this.state.newMessage}
-              placeholder="message"
+              placeholder="Message"
               onChange={e => this.handleChange(e)}
               name = "newMessage"
             />
