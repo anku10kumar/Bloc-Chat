@@ -25,8 +25,8 @@ this.props.firebase.auth().signOut();
     return(
 
       <div className = "buttons">
-        <button onClick={() => this.signInWithPopup()}>Sign-In</button>
-      <button onClick={() => this.signOut()}>Sign-Out</button>
+        <button onclick={() => this.signInWithPopup()}>Sign-In</button>
+      <button onclick={() => this.signOut()}>Sign-Out</button>
 
     <div>
 
