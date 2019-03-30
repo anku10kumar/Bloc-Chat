@@ -1,37 +1,28 @@
 import React, { Component } from 'react';
 
-<<<<<<< HEAD
 import './../style/RoomList.css';
-
-=======
-
 
 import './../style/RoomList.css';
 
 
->>>>>>> b771ee717533576c1a126144fe7e16e0e23b2260
+
 class RoomList extends Component {
   constructor (props) {
     super(props);
     this.state = {
       rooms: [],
-<<<<<<< HEAD
-=======
+
       newRoomName : ""
 
     }
     this.roomsRef = this.props.firebase.database().ref('rooms');
 
->>>>>>> b771ee717533576c1a126144fe7e16e0e23b2260
       newRoomName : "",
 activeRoom: ""
     }
     this.roomsRef = this.props.firebase.database().ref('rooms');
   this.selectRoom = this.selectRoom.bind(this)
-<<<<<<< HEAD
-=======
 
->>>>>>> b771ee717533576c1a126144fe7e16e0e23b2260
   }
 
   createNewRoom(newRoomName){
@@ -58,8 +49,7 @@ var form = document.getElementById("myForm");
 form.reset();
 }
 
-<<<<<<< HEAD
-=======
+
 
   render (){
     return (
@@ -67,7 +57,7 @@ form.reset();
       {this.state.rooms.map( room => (
         <li key={room.key}>{room.name}</li>
 
->>>>>>> b771ee717533576c1a126144fe7e16e0e23b2260
+
 selectRoom(room) {
    this.props.activeRoom(room);
  }
@@ -80,10 +70,7 @@ selectRoom(room) {
         <li key={room.key} onClick={() => this.selectRoom(room)}>{room.name} </li>
       ))}
     </h1>
-<<<<<<< HEAD
-=======
 
->>>>>>> b771ee717533576c1a126144fe7e16e0e23b2260
 
       <form id= "myForm" onSubmit={(e)=>this.handleSubmit(e)}>
 <label>
@@ -93,18 +80,10 @@ selectRoom(room) {
 <input type = "submit" value = "+"/>
       </form>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b771ee717533576c1a126144fe7e16e0e23b2260
        <h3>{this.state.activeRoom}</h3>
 
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> b771ee717533576c1a126144fe7e16e0e23b2260
     </div>
 )
   }
