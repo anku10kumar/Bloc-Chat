@@ -49,7 +49,7 @@ setUser(user) {
       <RoomList firebase={firebase} activeRoom={this.activeRoom}>
       </RoomList>
 
-      <MessageList firebase={ firebase } activeRoomKey={this.state.activeRoom.key} userName={this.state.user ? this.state.user.DisplayName : "Guest"}>
+      <MessageList firebase={ firebase } activeRoomKey={this.state.activeRoom.key} userName={this.state.user ? this.state.user.displayName : "Guest"}>
        </MessageList>
 
 

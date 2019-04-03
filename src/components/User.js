@@ -16,9 +16,18 @@ this.props.firebase.auth().signOut();
 
   componentDidMount(){
     this.props.firebase.auth().onAuthStateChanged( user => {
+      console.log(user)
       this.props.setUser(user);
     });
-  }
+    if (!User) {
+      try{
+        this.props.firebase.auth().signInAnonymously();
+      } catch ({ message }) {
+        alert(message);
+      }
+      }
+    }
+
 
   render(){
 
@@ -31,7 +40,7 @@ this.props.firebase.auth().signOut();
     <div>
 
       <p className ="UserName">
-        Hello, {this.props.user ? this.props.user.DisplayName : "Guest"}!
+        Hello, {this.props.user ? this.props.user.displayName : "Guest"}!
       </p>
 
     </div>

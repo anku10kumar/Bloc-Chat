@@ -11,19 +11,12 @@ class RoomList extends Component {
     super(props);
     this.state = {
       rooms: [],
+newRoomName : ""
+}
 
-      newRoomName : ""
-
-    }
     this.roomsRef = this.props.firebase.database().ref('rooms');
 
-      newRoomName : "",
-activeRoom: ""
-    }
-    this.roomsRef = this.props.firebase.database().ref('rooms');
-  this.selectRoom = this.selectRoom.bind(this)
-
-  }
+}
 
   createNewRoom(newRoomName){
      this.roomsRef.push({name:newRoomName});
@@ -49,18 +42,11 @@ var form = document.getElementById("myForm");
 form.reset();
 }
 
-
-
-  render (){
-    return (
-      <div>
-      {this.state.rooms.map( room => (
-        <li key={room.key}>{room.name}</li>
-
-
 selectRoom(room) {
    this.props.activeRoom(room);
  }
+
+
 
   render (){
     return (
@@ -88,6 +74,7 @@ selectRoom(room) {
 )
   }
 }
+
 
 
 

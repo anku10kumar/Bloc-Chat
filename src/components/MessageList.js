@@ -8,7 +8,7 @@ class MessageList extends Component {
     super(props);
     this.state = {
       messages: [],
-      userName:"user",
+      userName:[],
       content: "",
       sentAt: "",
       roomId: "",
@@ -28,7 +28,7 @@ class MessageList extends Component {
 
   createMessage(){
     this.messageRef.push({
-      username:this.state.userName,
+      username:this.props.userName,
       content:this.state.newMessage,
       sentAt:this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId:this.props.activeRoomKey,
@@ -59,45 +59,45 @@ class MessageList extends Component {
           <p>{this.props.activeRoomKey}</p>
 
 
-        <ul  className="messages">
-          {this.state.messages
-          .filter( message => message.roomId === this.props.activeRoomKey)
-          .map((message, index) => {
-            console.log(message);
-            return (
-              <li key = {index}>
-                {new Date(message.sentAt).toString()}
-                {message.username}
-                {message.content}
-                </li>
-          )
-        }
-      )
-        }
+          <ul  className="messages">
+                    {this.state.messages
+                    .filter( message => message.roomId === this.props.activeRoomKey)
+                    .map((message, index) => {
+                      console.log(message);
+                      return (
+                        <li key = {index}>
 
-          </ul>
-        </div>
+                          {message.content + ' From ' + message.username + ' Time ' + new Date(message.sentAt).toString()}
+                          </li>
+                    )
+                  }
+                )
+                  }
+
+                    </ul>
+
+</div>
 
 
 
-        <div className="create-message">
-          <form onSubmit= {e=> this.handleSubmit(e)} >
-            <input
-              type="text"
-              value={this.state.newMessage}
-              placeholder="Message"
-              onChange={e => this.handleChange(e)}
-              name = "newMessage"
-            />
-            <input type="submit" value="Send"
-            />
-          </form>
+<div className="create-message">
+  <form onSubmit= {e=> this.handleSubmit(e)} >
+    <input
+      type="text"
+      value={this.state.newMessage}
+      placeholder="Message"
+      onChange={e => this.handleChange(e)}
+      name = "newMessage"
+    />
+    <input type="submit" value="Send"
+    />
+  </form>
 
-        </div>
+</div>
 
-      </section>
-    )
-  }
+</section>
+)
+}
 }
 
 export default MessageList;
